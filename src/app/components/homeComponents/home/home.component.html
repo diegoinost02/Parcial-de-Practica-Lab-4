@@ -1,0 +1,9 @@
+<div class="contenedor">
+    <div class="componente">
+        <app-list-persons [inputPersons]="persons" (personToEdit)="editPerson($event)" (personToDelete)="deletePerson($event)"></app-list-persons>
+    </div>
+    <div class="componente">
+        <app-add-person (personAdded)="loadPersons()"></app-add-person>
+    </div>
+</div>
+<app-footer></app-footer>

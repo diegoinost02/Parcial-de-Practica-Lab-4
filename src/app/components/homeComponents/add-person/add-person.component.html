@@ -1,0 +1,57 @@
+<div>
+    <form class="formulario" [formGroup]="formPerson" (ngSubmit)="addPerson()">
+        <fieldset>
+            <div class="campo">
+                <label for="name">
+                    Name
+                </label>
+
+                <input type="text" formControlName="name" placeholder="Ingrese su nombre" id="name">
+
+                <div class="alerta" [hidden]="getName.valid || getName.pristine">
+                    El nombre es obligatorio
+                </div>
+            </div>
+
+            <div class="campo">
+                <label for="apellido">
+                    Apellido
+                </label>
+
+                <input type="text" formControlName="lastname" placeholder="Ingrese su apellido" id="lastname">
+
+                <div class="alerta" [hidden]="getLastName.valid || getLastName.pristine">
+                    El apellido es obligatorio
+                </div>
+            </div>
+
+            <div class="campo">
+                <label for="dni">
+                    DNI
+                </label>
+
+                <input type="text" formControlName="dni" placeholder="Ingrese su DNI" id="dni">
+
+                <div class="alerta" [hidden]="getDni.valid || getDni.pristine">
+                    El DNI es obligatorio
+                </div>
+            </div>
+
+            <div class="campo">
+                <label for="ciudad">
+                    Ciudad
+                </label>
+
+                <input type="text" formControlName="city" placeholder="Ingrese su ciudad" id="city">
+
+                <div class="alerta" [hidden]="getCity.valid || getCity.pristine">
+                    La ciudad es obligatoria
+                </div>
+            </div>
+
+            <button [disabled]="formPerson.invalid" type="submit">
+                Enviar
+            </button>
+        </fieldset>
+    </form>
+</div>
