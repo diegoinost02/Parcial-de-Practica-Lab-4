@@ -24,8 +24,12 @@
             </div>
         </div>
 
-        <button [disabled]="formUser.invalid">
+        <button type="submit" [disabled]="formUser.invalid">
             Iniciar Sesión
+        </button>
+
+        <button (click)="goToRegister()">
+            Crear Cuenta
         </button>
     </fieldset>
 </form>

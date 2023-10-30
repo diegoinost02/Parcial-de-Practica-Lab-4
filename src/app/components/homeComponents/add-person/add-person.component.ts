@@ -38,7 +38,7 @@ export class AddPersonComponent {
     if (this.formPerson.valid) {
       this.person = new Person(this.formPerson.value);
 
-      this.service.addUser(this.person).subscribe({
+      this.service.addPerson(this.person).subscribe({
         next: (resp) => {
           alert('Usuario registrado con éxito');
           this.personAdded.emit();

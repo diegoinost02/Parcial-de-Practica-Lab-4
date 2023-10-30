@@ -18,9 +18,6 @@ export class ApiService {
 
   private baseUrl = 'http://localhost:4000';
 
-  public getToAuth(user: User): Observable<User>{
-    return this.http.get<User>(`${this.baseUrl}/Users?dni=${user.email}&password=${user.password}`);
-  }
 
   public getPersons():Observable<Person[]>{
     return this.http.get<Person[]>(`${this.baseUrl}/persons`);
@@ -36,7 +33,16 @@ export class ApiService {
     catchError (error => of(false))
     );
   }
-  public addUser(person: Person): Observable<Person> {
+  public addPerson(person: Person): Observable<Person> {
     return this.http.post<Person>(`${this.baseUrl}/persons`, person);
+  }
+  public getToAuth(user: User): Observable<User[]>{
+    return this.http.get<User[]>(`${this.baseUrl}/Users?email=${user.email}&password=${user.password}`);
+  }
+  public getToChek(user: User): Observable<User[]>{
+    return this.http.get<User[]>(`${this.baseUrl}/Users?email=${user.email}`);
+  }
+  public addUser(user: User):Observable<User>{
+    return this.http.post<User>(`${this.baseUrl}/users`,user);
   }
 }

@@ -1,1 +1,31 @@
-<p>register works!</p>
+<form class="formulario" [formGroup]="formUser" (ngSubmit)="checkAccount()">
+    <fieldset>
+        <div class="campo">
+            <label for="email">
+                Email
+            </label>
+
+            <input type="email" formControlName="email" placeholder="Ingrese su email" id="email">
+
+            <div class="alerta" [hidden]="getEmail.valid || getEmail.pristine">
+                El email es obligatorio
+            </div>
+        </div>
+
+        <div class="campo">
+            <label for="password">
+                Contraseña
+            </label>
+
+            <input type="password" formControlName="password" placeholder="Ingrese su contraseña" id="password">
+
+            <div class="alerta" [hidden]="getPassword.valid || getPassword.pristine">
+                La contraseña es obligatoria
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="formUser.invalid">
+            Crear
+        </button>
+    </fieldset>
+</form>

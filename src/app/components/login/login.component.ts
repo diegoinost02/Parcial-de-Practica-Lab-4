@@ -10,16 +10,16 @@ import { ApiService } from 'src/app/core/services/api.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
- public user : User = new User();
+  public user: User = new User();
 
-  constructor(private router : Router, private formBuiler: FormBuilder, private service: ApiService){}
+  constructor(private router: Router, private formBuiler: FormBuilder, private service: ApiService) { }
 
   // email = new FormControl('');
   // contraseña = new FormControl('');
 
   formUser = this.formBuiler.group({
     'email': ['', Validators.required],
-    'password' : ['',Validators.required]
+    'password': ['', Validators.required]
   })
   get getEmail() {
     return this.formUser.get('email') as FormControl;
@@ -27,29 +27,36 @@ export class LoginComponent {
   get getPassword() {
     return this.formUser.get('password') as FormControl;
   }
-  
 
-  public logear(){
-    if (this.formUser.valid){
 
-      const email = this.formUser.value.email!;
-      const password = this.formUser.value.password!;
+  public logear() {
+    if (this.formUser.valid) {
 
-      this.user.email = email;
-      this.user.password = password;
+      this.user.email = this.formUser.value.email!;
+      this.user.password = this.formUser.value.password!;
 
       this.service.getToAuth(this.user).subscribe({
-        next:(user:User) => {
-          this.service.setUser(user);
-          console.log("El dni se ha verificado correctamente");
-          this.router.navigate(["/home"]);
+
+        next: (users: User[]) => {
+          
+          if (users.length > 0) {
+            console.log("El user se ha verificado correctamente");
+            this.router.navigate(["/home"]);
+          }
+          else {
+            alert("El user no se encuentra registrado");
+          }
         },
-        error: (error:any) => {
-          console.error("El dni no se encuentra registrado");
+        error: (error: any) => {
+          console.error("Error");
         }
       })
-
     }
   }
+  public goToRegister() {
+    this.router.navigate(['/register']);
+  }
 }
- 
+
+ //this.service.setUser(users[0]);
+ //luego del console.log("El user se ha verificado correctamente"); en caso de luego agregar modificacion de usuario
