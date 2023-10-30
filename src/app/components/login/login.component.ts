@@ -25,7 +25,6 @@ export class LoginComponent {
     return this.formUser.get('password') as FormControl;
   }
 
-
   public logear() {
     if (this.formUser.valid) {
 

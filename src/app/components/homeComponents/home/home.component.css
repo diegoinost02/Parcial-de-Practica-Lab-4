@@ -5,7 +5,7 @@
     max-width: 100%;
 }
 .componente{
-    display: flex; /*por defecto es row*/
+    display: flex;
     gap: 1rem;
     max-width: 100%;
 }

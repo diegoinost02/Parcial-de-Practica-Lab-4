@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Person } from 'src/app/core/models';
 import { EditPersonComponent } from '../edit-person/edit-person.component';
@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/core/services/api.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
 
   persons: Array<Person> = [];
 
@@ -33,10 +33,10 @@ export class HomeComponent {
     dialogRef.afterClosed().subscribe(result => {
       this.loadPersons();
       console.log('El cuadro de diálogo se cerró con resultado:', result);
-    });
+    })
   }
 
-  public async deletePerson(id: number){
+  public deletePerson(id: number){
     this.service.deletePerson(id).subscribe({
       next: ()=>{
         this.loadPersons();

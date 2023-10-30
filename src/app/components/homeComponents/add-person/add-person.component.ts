@@ -44,7 +44,7 @@ export class AddPersonComponent {
           this.personAdded.emit();
         },
         error: (error) => {
-          alert('Error al registrar el usuario:');
+          alert('Error al registrar el usuario');
         }
       });
 

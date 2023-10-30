@@ -19,8 +19,8 @@
           <td>{{ person.lastname }}</td>
           <td>{{ person.dni }}</td>
           <td>{{ person.city }}</td>
-          <td><button class="" (click)="deletePerson(person.id!)">X</button></td>
-          <td><button class="" (click)="editPerson(person)">E</button></td>
+          <td><button (click)="deletePerson(person.id!)">X</button></td>
+          <td><button (click)="editPerson(person)">E</button></td>
         </tr>
       </tbody>
     </table>
