@@ -14,9 +14,6 @@ export class LoginComponent {
 
   constructor(private router: Router, private formBuiler: FormBuilder, private service: ApiService) { }
 
-  // email = new FormControl('');
-  // contraseña = new FormControl('');
-
   formUser = this.formBuiler.group({
     'email': ['', Validators.required],
     'password': ['', Validators.required]
